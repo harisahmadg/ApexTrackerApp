@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS guilds (
+    GuildID INTEGER PRIMARY KEY,
+    Prefix TEXT DEFAULT "+"
+);
