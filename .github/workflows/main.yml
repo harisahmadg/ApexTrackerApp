@@ -1,0 +1,19 @@
+name: Updates-docker-image
+
+on:
+  push:
+    branches: [ main ]
+  pull:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build & Push
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "harisa23" --password-stdin
+        docker image build -t harisa23/apex_tracker_app:v3 .
+        docker push harisa23/apex_tracker_app:v3
